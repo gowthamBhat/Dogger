@@ -17,33 +17,35 @@ if (isset($_SESSION['username'])) {
 
 
 
-    if (isset($_POST['submit'])) {
+    // if (isset($_POST['submit'])) {
 
-		$email = $_POST['email'];
-        $name = $_POST['name'];
-        $passcode = $_POST['passcode'];
+	// 	$email = $_POST['email'];
+    //     $name = $_POST['name'];
+    //     $passcode = $_POST['passcode'];
 
-        if (empty($name)) {
-            $error = "<div class='error'>Please Enter Username</div>";
-        } else if (empty($passcode)) {
-            $error = "<div class='error'>Please Enter Password</div>";
-        }
-        else if (empty($email)) {
-            $error = "<div class='error'>Please Enter email</div>";
-        } else {
+    //     if (empty($name)) {
+    //         $error = "<div class='error'>Please Enter Username</div>";
+    //     } else if (empty($passcode)) {
+    //         $error = "<div class='error'>Please Enter Password</div>";
+    //     }
+    //     else if (empty($email)) {
+    //         $error = "<div class='error'>Please Enter email</div>";
+    //     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+	// 		$error = "<div class='error'>Enter Valid Email Address</div>";
+	// 	} else {
 
-            $q = "SELECT * FROM user WHERE uname='$name' AND passcode='$passcode'";
+    //         $q = "SELECT * FROM user WHERE uname='$name' AND passcode='$passcode'";
 
-            $result = mysqli_query($con, $q);
+    //         $result = mysqli_query($con, $q);
 
-            if (mysqli_num_rows($result) == 1) {
-                $_SESSION['username'] = $name;
-                header("location:market.php");
-            } else {
-                $error = "<div class='error'>Wrong Username/Password</div>";
-            }
-        }
-    }
+    //         if (mysqli_num_rows($result) == 1) {
+    //             $_SESSION['username'] = $name;
+    //             header("location:market.php");
+    //         } else {
+    //             $error = "<div class='error'>Wrong Username/Password</div>";
+    //         }
+    //     }
+    // }
 
 
 ?>
@@ -68,44 +70,48 @@ if (isset($_SESSION['username'])) {
         <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="../css/regForm.css">
         <title>Document</title>
+    
     </head>
 
     <body>
-        <div class="wrapper">
-            <?php
-
-            echo $error;
-
-            ?>
+        <div class="wrapper-signUp">
+           
+            <div id="message" class="error" style="display:none"></div>
 
             <h1>Dogger</h1>
             <p><strong>Log-in and be a Dogger</strong> </p>
-            <form class="form" method="post" action="">
-				
+            <!-- FORM WORKS USING AJAX -->
+            <form class="form" method="post" action="" id="form">
+                <div id="passwordMessage" class="AjaxResponse"></div>
+                <div id="nameMessage" class="AjaxResponse"></div>
+                <div id="emailMessage" class="AjaxResponse"></div>
+                
+              
                 <input type="text" class="name" name="name" value="<?php echo $name; ?>" autocomplete="off" placeholder="Name">
+               
                 <div>
                     <p class="name-help">Please enter your name.</p>
-				</div>
-
-				
+                </div>
+                
                 <input type="email" class="email" name="email" value="<?php echo $email; ?>" autocomplete="off" placeholder="Email">
                 <div>
                     <p class="email-help">Please enter your Email.</p>
-				</div>
-				
-		
+                </div>
+               
                 <input type="password" class="password" name="passcode" value="<?php echo $passcode; ?>" placeholder="Password">
                 <div>
-                    <p class="password-help">Please enter your password.</p>
-
-                </div>
-                <input type="submit" name="submit" class="submit" value="LogIn">
+               </div>
+                
+                <input type="submit" name="submit" class="submit" id="submit" value="Sign-Up">
             </form>
+
         </div>
         <p class="optimize">
-            Don't have an account? &nbsp <a href="sign-up.php" style="text-decoration: none;"><strong style="color:teal;"> SIGN UP</strong></a>
+            have an account? &nbsp <a href="login.php" style="text-decoration: none;"><strong style="color:teal;"> Login</strong></a>
         </p>
         <script>
+
+        $(document).ready(function(){
             $(".name").focus(function() {
                 $(".name-help").slideDown(500);
             }).blur(function() {
@@ -122,6 +128,26 @@ if (isset($_SESSION['username'])) {
             }).blur(function() {
                 $(".password-help").slideUp(500);
 			});
+
+            
+            $('#submit').on('click',function(event){
+            event.preventDefault();
+                $.ajax({
+                type: "post",
+                url: "signUpAjax.php",
+                data:$('#form').serialize() ,
+                dataType: "text",
+                success: function (response) {
+
+                   
+                    $('#nameMessage').html(response.messageUser);
+                    $('#emailMessage').html(response.messageEmail);
+                    $('#passwordMessage').html(response.messagepassword);
+
+                     }
+            });
+          });
+       });
 			
         </script>
     </body>
