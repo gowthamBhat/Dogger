@@ -27,6 +27,9 @@ if (isset($_SESSION['username'])) {
             $error = "<div class='error'>Please Enter Username</div>";
         } else if (empty($passcode)) {
             $error = "<div class='error'>Please Enter Password</div>";
+        }
+        else if (empty($email)) {
+            $error = "<div class='error'>Please Enter email</div>";
         } else {
 
             $q = "SELECT * FROM user WHERE uname='$name' AND passcode='$passcode'";
