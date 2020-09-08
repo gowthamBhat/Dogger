@@ -51,7 +51,7 @@ p {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],input[type="email"] {
   width: 98%;
   padding: 15px 0px 15px 8px;
   border-radius: 5px;
@@ -107,7 +107,7 @@ input[type="submit"]:hover {
 }
 
 .name-help,
-.email-help {
+.email-help,.password-help {
   display: none;
   padding: 0px;
   margin: 0px 0px 15px 0px;
