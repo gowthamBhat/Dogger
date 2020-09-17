@@ -11,7 +11,7 @@ session_start();
 if (!isset($_SESSION['username'])) {
 	header("location:login-pass.php");
 } else {
-	
+
 
 	$uname = $_SESSION['username'];
 	$petname = '';
@@ -32,7 +32,7 @@ if (!isset($_SESSION['username'])) {
 	if (isset($_POST['submit'])) {
 
 
-		$uname = 'gowth';
+		$uname = $_SESSION['username'];
 
 		$petname = $_POST['petname'];
 
