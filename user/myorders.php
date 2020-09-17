@@ -60,7 +60,7 @@ if (!isset($_SESSION['username'])) {
             echo " <div class='card-body'> ";
             echo " <h5 class='card-title'>" . $row['petname'] . "</h5> ";
             echo " <p class='card-text'>Breed:" . $row['breed'] . "&nbsp &nbsp  Age:" . $row['petage'] . "</p> ";
-            // echo "   <a href='adopt.php?petname=$petname' class='btn btn-primary'>Adopt</a> ";
+            echo "<a href='delete_order.php?id=" . $row['id'] . "' class='btn btn-primary'>delete</a> ";
             echo "Price:" . $row['price'] . "<br>";
             //  echo timeAgo($row['stamp']); //calling timeago function 
 
