@@ -5,7 +5,7 @@
 			$petname = $_GET['petname'];
 
 
-			$petname1=$petage1=$breed1=$address1=$price1=$mobile1=$file_name1="";
+			$petname1 = $petage1 = $breed1 = $address1 = $price1 = $mobile1 = $file_name1 = "";
 
 
 			if (!isset($_SESSION['username'])) {
@@ -39,12 +39,12 @@
 
 					$uname = $_SESSION['username'];
 					$petname1 = $rows['petname']; //petname to delete in database
-					$petage1=  $rows['petage'];
-					$breed1=     $rows['breed'] ;
-					$address1=  $rows['address'];
-					$price1=   $rows['price'];
-					$mobile1=   $rows['mobile'] ;
-					$file_name1= $rows['img'];
+					$petage1 =  $rows['petage'];
+					$breed1 =     $rows['breed'];
+					$address1 =  $rows['address'];
+					$price1 =   $rows['price'];
+					$mobile1 =   $rows['mobile'];
+					$file_name1 = $rows['img'];
 
 
 
@@ -60,31 +60,32 @@
 						<title>adopt</title>
 						<link rel="stylesheet" type="text/css" href="../css/adopt.css">
 						<link rel="stylesheet" href="../css/bootstrap.min.css">
-						<link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" 
-						rel="stylesheet">
-					
-					<style>
-						body{
-							background-image: url(<?php echo "'images/" . $rows['img'] . "'"; ?>);
-							font-weight: bold;
-							color: white;
-							background-repeat: no-repeat;
-							width: 100%;
-							height: 730px;
-							background-size: 100% 100%;
+						<link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+
+						<style>
+							body {
+								background-image: url(<?php echo "'images/" . $rows['img'] . "'"; ?>);
+								font-weight: bold;
+								color: white;
+								background-repeat: no-repeat;
+								width: 100%;
+								height: 730px;
+								background-size: 100% 100%;
 
 
 
-						}
-					</style>
+							}
+						</style>
 					</head>
+
 					<body>
 						<div id="ttl">
-				<a href="market.php" id="anc">
-					<p id="dogger">Dogger</p> </a>
+							<a href="market.php" id="anc">
+								<p id="dogger">Dogger</p>
+							</a>
 						</div>
 
-					<?php
+				<?php
 
 
 
@@ -141,10 +142,9 @@
 
 				$query1 = "INSERT INTO sold(uname,petname,petage,breed,price,mobile,address,img) VALUES('$uname','$petname1','$petage1','$breed1','$price1','$mobile1','$address1','$file_name1')";
 
-				$result1 = mysqli_query($con,$query1);
+				$result1 = mysqli_query($con, $query1);
 
-				if(!$result1)
-				{
+				if (!$result1) {
 					echo "<script> alert('query failed-insert') </script> ;";
 				}
 
@@ -152,42 +152,25 @@
 
 				$query2 = "DELETE FROM addpet  WHERE petname='$petname1'";
 
-				$result2 = mysqli_query($con,$query2);
+				$result2 = mysqli_query($con, $query2);
 
 
-				
 
-				if(!$result2)
-				{
+
+				if (!$result2) {
 					echo "<script> alert('query failed-del');";
-				}
-				else
+				} else
 
 					echo "<script> alert('puppy orderd'); </script>";
-					echo "<script>  window.location.assign('http://localhost/dogger/user/market.php') </script>";
-
-					//header("location:http://localhost/dogger/user/market.php");
-
-
-
-
-
-
+				echo "<script>  window.location.assign('http://localhost/dogger/user/market.php') </script>";
 			}
+				?>
 
-
-					?>
-
-
-
-
-
-
-						</div>
-		</div>
-						<form action="" method="POST">
-						<button class="btn btn-dark" name="adopt">Adopt</button>
-						</form>
+				</div>
+				</div>
+				<form action="" method="POST">
+					<button class="btn btn-dark" name="adopt">Adopt</button>
+				</form>
 					</body>
 
 					</html>
