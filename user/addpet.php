@@ -198,7 +198,7 @@ if (!isset($_SESSION['username'])) {
 						</tr>
 						<tr>
 							<th>address</th>
-							<td><textarea name="address" id="address" cols="50" rows="3" value="<?php echo $address; ?>"></textarea></td>
+							<td><textarea name="address" id="address" cols="50" rows="3"><?php echo $address; ?></textarea></td>
 
 
 						</tr>

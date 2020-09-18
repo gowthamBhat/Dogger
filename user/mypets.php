@@ -126,6 +126,7 @@ if (!isset($_SESSION['username'])) {
             echo " <div class='card-body'> ";
             echo " <h5 class='card-title'>" . $row['petname'] . "</h5> ";
             echo " <p class='card-text'>Breed:" . $row['breed'] . "&nbsp &nbsp  Age:" . $row['petage'] . "</p> ";
+            echo "<a href='update.php?id=" . $row['id'] . "' class='btn btn-primary'>update</a> ";
             echo "<a href='delete.php?id=" . $row['id'] . "' class='btn btn-primary'>delete</a> ";
             echo "Price:" . $row['price'] . "<br>";
             echo timeAgo($row['stamp']); //calling timeago function 

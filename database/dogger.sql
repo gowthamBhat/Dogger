@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2020 at 03:51 PM
+-- Generation Time: Sep 18, 2020 at 08:07 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -47,7 +47,11 @@ CREATE TABLE `addpet` (
 --
 
 INSERT INTO `addpet` (`id`, `uname`, `petname`, `petage`, `breed`, `price`, `mobile`, `address`, `img`, `type`, `stamp`) VALUES
-(21, 'gowth', 'jonny', 7, 'husky', 1000, 2147483647, '#100,Halasinahalli, Guddekoppa(P), Thirthahalli(T), Shimoga(D) Pin code-577414', 'siberian-husky-woods-shutterstock_558432511.jpg', 'image/jpeg', '2020-07-21 11:01:13am');
+(30, 'preeth', 'jully', 5, 'dabar', 1290, 897117257, '#100,Halasinahalli, Guddekoppa(P), Thirthahalli(T), Shimoga(D) Pin code-577414', 'HB4AT3D3IMI6TMPTWIZ74WAR54.jpg', 'image/jpeg', '2020-09-17 09:39:49pm'),
+(31, 'preeth', 'goerge', 5, 'jerman shepard', 543, 2147483647, '#100,Halasinahalli, Guddekoppa(P), Thirthahalli(T), Shimoga(D) Pin code-577414', 'smartest-dog-breeds-1553287693.jpg', 'image/jpeg', '2020-09-17 09:40:22pm'),
+(32, 'preeth', 'rani', 6, 'dashand', 544, 897117257, '#100,Halasinahalli, Guddekoppa(P), Thirthahalli(T), Shimoga(D) Pin code-577414', 'tan-and-white-short-coat-dog-laying-down-in-a-brown-wooden-128817.jpg', 'image/jpeg', '2020-09-17 09:41:11pm'),
+(33, 'preeth', 'scooby', 6, 'jerman shepard', 1000, 897117257, '#100,Halasinahalli, Guddekoppa(P), Thirthahalli(T), Shimoga(D) Pin code-577414', 'short-coated-white-dog-on-green-field-247937.jpg', 'image/jpeg', '2020-09-17 09:41:45pm'),
+(34, 'gowth', 'maddy', 7, 'vega', 5000, 2147483647, '#100,Halasinahalli, Guddekoppa(P), Thirthahalli(T), Shimoga(D) Pin ', 'samoyed_puppy_dog_pictures.jpg', 'image/jpeg', '2020-09-18 04:34:53pm');
 
 -- --------------------------------------------------------
 
@@ -67,13 +71,6 @@ CREATE TABLE `sold` (
   `img` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `sold`
---
-
-INSERT INTO `sold` (`id`, `uname`, `petname`, `petage`, `breed`, `price`, `mobile`, `address`, `img`) VALUES
-(1, 'gowth', 'nana', 1, 'gaga', 5432, 897117254, '#100,Halasinahalli, Guddekoppa(P), Thirthahalli(T), Shimoga(D) Pin code-577414', 'samoyed_puppy_dog_pictures.jpg');
-
 -- --------------------------------------------------------
 
 --
@@ -83,6 +80,7 @@ INSERT INTO `sold` (`id`, `uname`, `petname`, `petage`, `breed`, `price`, `mobil
 CREATE TABLE `user` (
   `id` int(10) NOT NULL,
   `uname` varchar(20) CHARACTER SET latin1 NOT NULL,
+  `email` varchar(255) NOT NULL,
   `passcode` varchar(20) CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -90,9 +88,10 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `uname`, `passcode`) VALUES
-(1, 'gowth', 'gowth123'),
-(2, 'preeth', 'preeth123');
+INSERT INTO `user` (`id`, `uname`, `email`, `passcode`) VALUES
+(1, 'gowth', 'gowthambhat793@gmail.com', 'gowth123'),
+(2, 'preeth', 'preethambhat23@gmail.com', 'preeth123'),
+(3, 'Gowtham', 'gowthambhat793@gmail.com', '123456789');
 
 --
 -- Indexes for dumped tables
@@ -124,7 +123,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `addpet`
 --
 ALTER TABLE `addpet`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `sold`
@@ -136,7 +135,7 @@ ALTER TABLE `sold`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
