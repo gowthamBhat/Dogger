@@ -34,7 +34,7 @@ if (isset($_SESSION['username'])) {
 
 			if (mysqli_num_rows($result) == 1) {
 				$_SESSION['username'] = $name;
-				header("location:market.php");
+				header("location:addpet.php");
 			} else {
 				$error = "<div class='error'>Wrong Username/Password</div>";
 			}
