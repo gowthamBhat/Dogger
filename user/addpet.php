@@ -11,7 +11,7 @@ session_start();
 if (!isset($_SESSION['username'])) {
 	header("location:login-pass.php");
 } else {
-	
+
 
 	$uname = $_SESSION['username'];
 	$petname = '';
@@ -32,7 +32,7 @@ if (!isset($_SESSION['username'])) {
 	if (isset($_POST['submit'])) {
 
 
-		$uname = 'gowth';
+		$uname = $_SESSION['username'];
 
 		$petname = $_POST['petname'];
 
@@ -198,7 +198,7 @@ if (!isset($_SESSION['username'])) {
 						</tr>
 						<tr>
 							<th>address</th>
-							<td><textarea name="address" id="address" cols="50" rows="3" value="<?php echo $address; ?>"></textarea></td>
+							<td><textarea name="address" id="address" cols="50" rows="3"><?php echo $address; ?></textarea></td>
 
 
 						</tr>

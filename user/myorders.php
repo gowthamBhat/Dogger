@@ -24,7 +24,7 @@ if (!isset($_SESSION['username'])) {
     $num = mysqli_num_rows($res);
 
     if ($num == 0) {
-        echo "<p class='note'>No Orders </p> ";
+        echo "<center><p class='note'>No Orders </p></center> ";
     }
 
 
@@ -46,30 +46,27 @@ if (!isset($_SESSION['username'])) {
 
         <?php
 
-            while($row = mysqli_fetch_array($res))
-            {
+        while ($row = mysqli_fetch_array($res)) {
 
-               // echo "<div class='order-box'>";
+            // echo "<div class='order-box'>";
 
-                //echo "<img class='card-img-top' src='images/" . $row['img'] . "' alt='Card image cap'> ";
+            //echo "<img class='card-img-top' src='images/" . $row['img'] . "' alt='Card image cap'> ";
 
 
-               // echo "</div>";
-               
+            // echo "</div>";
+
             echo "<div class='card' style='width: 18rem;'> ";
             echo "<img class='card-img-top' src='images/" . $row['img'] . "' alt='Card image cap'> ";
             echo " <div class='card-body'> ";
             echo " <h5 class='card-title'>" . $row['petname'] . "</h5> ";
             echo " <p class='card-text'>Breed:" . $row['breed'] . "&nbsp &nbsp  Age:" . $row['petage'] . "</p> ";
-           // echo "   <a href='adopt.php?petname=$petname' class='btn btn-primary'>Adopt</a> ";
+            echo "<a href='delete_order.php?id=" . $row['id'] . "' class='btn btn-primary'>delete</a> ";
             echo "Price:" . $row['price'] . "<br>";
-          //  echo timeAgo($row['stamp']); //calling timeago function 
+            //  echo timeAgo($row['stamp']); //calling timeago function 
 
             echo "  </div> ";
             echo "  </div> ";
-
-
-            }
+        }
 
 
         ?>

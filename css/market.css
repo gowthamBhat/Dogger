@@ -73,3 +73,9 @@ img {
   font-size: large;
   width: fit-content;
 }
+.note {
+  color: beige;
+  font-size: 40;
+  margin-top: 50px;
+  font-weight: 600;
+}
